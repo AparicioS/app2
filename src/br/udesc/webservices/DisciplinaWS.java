@@ -1,9 +1,8 @@
 package br.udesc.webservices;
 
-import java.awt.PageAttributes.MediaType;
+
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,7 +11,7 @@ import javax.ws.rs.Produces;
 
 import com.google.gson.Gson;
 
-import br.udesc.dao.Dao;
+
 import br.udesc.dao.DisciplinaDao;
 import br.udesc.modelo.Disciplina;
 
@@ -21,13 +20,13 @@ import br.udesc.modelo.Disciplina;
 public class DisciplinaWS {
 	
 
-	private Dao<Disciplina> dao = new Dao<Disciplina>();
+   private DisciplinaDao dao = new DisciplinaDao();
 	
 	@GET
 	@Path("listar")
 	@Produces("application/json")
 	public List<Disciplina> getDisciplinas() {
-		return null;
+		return dao.listar();
 	}
 	
 	@POST

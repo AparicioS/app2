@@ -6,16 +6,19 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import br.udesc.dao.ProfessoresDao;
 import br.udesc.modelo.Professores;
 
 @Path("professores")
 public class ProfessoresWs {
 	
+	private ProfessoresDao dao = new ProfessoresDao();
+	
 	@GET
 	@Path("listar")
 	@Produces("application/json")
 	public List<Professores> getProfessores() {
-		return null;
+		return dao.listar();
 	}
 
 }

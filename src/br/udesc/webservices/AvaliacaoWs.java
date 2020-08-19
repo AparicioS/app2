@@ -13,8 +13,6 @@ import br.udesc.modelo.Avaliacoes;
 @Path("avaliacao")
 public class AvaliacaoWs {
 	
-	@EJB
-	private AvaliacaoDao dao;
 
 	@GET
 	@Path("listar")
