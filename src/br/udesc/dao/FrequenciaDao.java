@@ -5,31 +5,32 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.sound.midi.Soundbank;
 
 import br.udesc.modelo.Disciplina;
+import br.udesc.modelo.Frequencia;
 
-public class DisciplinaDao extends Dao<Disciplina> {
+public class FrequenciaDao extends Dao<Frequencia> {
 	
-	public List<Disciplina> listar() {
+	public List<Frequencia> listar() {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina d", Disciplina.class);
-		List<Disciplina> lista = q.getResultList();
+		Query q  = entityManager.createNativeQuery("SELECT * FROM frequencia d", Frequencia.class);
+		List<Frequencia> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
 		return lista;
 	}
 	
-	public Disciplina getId(int id) {
+	public Frequencia getId(int id) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina d WHERE cd_disciplina = " +id, Disciplina.class);
-		List<Disciplina> lista = q.getResultList();
+		Query q  = entityManager.createNativeQuery("SELECT * FROM frequencia d WHERE id_frequencia = " +id, Disciplina.class);
+		List<Frequencia> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
 		return lista.get(0);
 	}
+
 }

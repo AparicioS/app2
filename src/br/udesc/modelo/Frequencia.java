@@ -2,6 +2,7 @@ package br.udesc.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Frequencia implements Serializable {
  private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "frequencia")
+	@Column(name = "id_frequencia")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
@@ -31,7 +32,7 @@ public class Frequencia implements Serializable {
 	private DisciplinaProfessores disciplinaProfessores;
 	
 	@Column(name = "dt_date")
-	private LocalDate data;
+	private Date data;
 	
 	@Column(name = "nr_qtasaulas")
 	private int nr_qtasaulas;
@@ -40,8 +41,10 @@ public class Frequencia implements Serializable {
 		
 	}
 
+
+
 	public Frequencia(Disciplina disciplina, Professores professores, DisciplinaProfessores disciplinaProfessores,
-			LocalDate data, int nr_qtasaulas) {
+			Date data, int nr_qtasaulas) {
 		super();
 		this.disciplina = disciplina;
 		this.professores = professores;
@@ -49,6 +52,8 @@ public class Frequencia implements Serializable {
 		this.data = data;
 		this.nr_qtasaulas = nr_qtasaulas;
 	}
+
+
 
 	public Disciplina getDisciplina() {
 		return disciplina;
@@ -74,13 +79,15 @@ public class Frequencia implements Serializable {
 		this.disciplinaProfessores = disciplinaProfessores;
 	}
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
+
+
 
 	public int getNr_qtasaulas() {
 		return nr_qtasaulas;

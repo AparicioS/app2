@@ -5,31 +5,32 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.sound.midi.Soundbank;
 
 import br.udesc.modelo.Disciplina;
+import br.udesc.modelo.DisciplinaProfessores;
 
-public class DisciplinaDao extends Dao<Disciplina> {
+public class DisciplinaProfessorDao extends Dao<DisciplinaProfessores> {
 	
-	public List<Disciplina> listar() {
+	public List<DisciplinaProfessores> listar() {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina d", Disciplina.class);
-		List<Disciplina> lista = q.getResultList();
+		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina_professores d", DisciplinaProfessores.class);
+		List<DisciplinaProfessores> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
 		return lista;
 	}
 	
-	public Disciplina getId(int id) {
+	public DisciplinaProfessores getId(int id) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
-		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina d WHERE cd_disciplina = " +id, Disciplina.class);
-		List<Disciplina> lista = q.getResultList();
+		Query q  = entityManager.createNativeQuery("SELECT * FROM disciplina_professores d WHERE ds_semestre = " +id, DisciplinaProfessores.class);
+		List<DisciplinaProfessores> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
 		return lista.get(0);
 	}
+
 }

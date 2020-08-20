@@ -21,5 +21,17 @@ public class ProfessoresDao extends Dao<Professores> {
 		entityManager.close();
 		return lista;
 	}
+	
+	public Professores getId(int id) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		Query q  = entityManager.createNativeQuery("SELECT * FROM professores d WHERE cd_professor = " +id, Professores.class);
+		List<Professores> lista = q.getResultList();
+		entityTransaction.commit();
+		entityManager.close();
+		System.out.println(lista.get(0).toString());
+		return lista.get(0);
+	}
 
 }

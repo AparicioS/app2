@@ -28,15 +28,5 @@ public class DisciplinaWS {
 	public List<Disciplina> getDisciplinas() {
 		return dao.listar();
 	}
-	
-	@POST
-	@Consumes("application/json")
-	public void setDisciplina(String discliplina) {
-		Gson g = new Gson();
-		Disciplina dis = g.fromJson(discliplina, Disciplina.class);
-		 dao.salvar(dis);
-	}
-	
-	
 
 }
