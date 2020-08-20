@@ -3,6 +3,7 @@ package br.udesc.webservices;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -39,6 +40,7 @@ public class DisciplinaProfessoresWS {
 
 	@POST
 	@Consumes("application/json")
+	@RolesAllowed("registrar_cronograma")
 	public Response getTurma(String json) throws JSONException {
 
 		try {

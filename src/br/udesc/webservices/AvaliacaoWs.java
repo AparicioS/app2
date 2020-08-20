@@ -2,6 +2,7 @@ package br.udesc.webservices;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -41,6 +42,7 @@ public class AvaliacaoWs {
 
 	@POST
 	@Consumes("application/json")
+	@RolesAllowed("registrar_avaliacao")
 	public Response getAvaliacoes(String json) {
 
 		try {

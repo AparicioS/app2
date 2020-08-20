@@ -3,18 +3,23 @@ package br.udesc.utils;
 import java.lang.reflect.Method;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.container.ResourceInfo;
 
+import br.udesc.dao.ServicosUsuarioDao;
+import br.udesc.modelo.Servico;
+import br.udesc.modelo.ServicoUsuarioAutorizado;
 import br.udesc.modelo.Usuario;
 
 public class AuthenticationUtils {
 
 	private static ResourceInfo _resourceInfo;
 
+	
 	
 	private static Map< String, Usuario> usuarios = new HashMap<>();
 	
@@ -67,15 +72,25 @@ public class AuthenticationUtils {
 	         * aqui voce vai incluir a sua logica para validar o usuario e a senha.
 	         * Por exemplo, puxar do BD. Eu estou usando Map soh para exemplificar.
 	         */
+	        ServicosUsuarioDao sdd = new ServicosUsuarioDao();
 	        
-	        Usuario usuario = usuarios.get(username);
+	        List<ServicoUsuarioAutorizado> listaAuto = sdd.listar();
+	        ServicoUsuarioAutorizado sa = new ServicoUsuarioAutorizado();
+	        for(ServicoUsuarioAutorizado sd : listaAuto) {
+	        	if(sd.getUsuario().getNome().equals(username) && sd.getUsuario().getSenha().equals(password)) {
+	        		sa = sd;
+	        	}
+	        }
+	        
+	        Usuario usuario = sa.getUsuario();
+	        Servico servico = sa.getServico();
 	        
 	        if ( usuario != null && usuario.getSenha().equals(password)) {
 	        
 	        	if (roles.length > 0) {
 		        	
 		        	for (String role:roles) {
-//		        		if (usuario.hasRole(role)) 
+		        		if (servico.getNomeServico().equals(role)) 
 		        			return true;
 		        	}
 		        	

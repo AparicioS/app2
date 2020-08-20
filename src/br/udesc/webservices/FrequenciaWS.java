@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -45,6 +46,7 @@ public class FrequenciaWS {
 
 	@POST
 	@Consumes("application/json")
+	@RolesAllowed("criar_turma")
 	public Response getFrequencia(String json) throws JSONException, ParseException {
 
 		try {
