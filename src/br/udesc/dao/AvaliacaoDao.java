@@ -24,7 +24,7 @@ public class AvaliacaoDao extends Dao<Avaliacoes> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new ObjetoInexistente("Avaliação");
+//			throw new ObjetoInexistente("Avaliação");
 		}
 		return lista;
 	}

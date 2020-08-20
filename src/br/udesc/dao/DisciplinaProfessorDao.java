@@ -35,7 +35,7 @@ public class DisciplinaProfessorDao extends Dao<DisciplinaProfessores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			 throw new ObjetoInexistente("Turma");
+//			 throw new ObjetoInexistente("Turma");
 		}
 		return lista.get(0);
 	}
