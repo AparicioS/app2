@@ -40,6 +40,14 @@ public class Disciplina implements Serializable {
 	public void setDs_disciplina(String ds_disciplina) {
 		this.ds_disciplina = ds_disciplina;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 	
 

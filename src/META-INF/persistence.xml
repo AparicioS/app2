@@ -23,6 +23,14 @@
 		<class>br.udesc.modelo.Matricula</class>
 
 		<class>br.udesc.modelo.Professores</class>
+		
+		<class>br.udesc.modelo.Servico</class>
+		
+		<class>br.udesc.modelo.Usuario</class>
+		
+		<class>br.udesc.modelo.ServicosUsados</class>
+		
+		<class>br.udesc.modelo.ServicoUsuarioAutorizado</class>
 
 
 		<properties>
@@ -47,7 +55,10 @@
 			<property name="hibernate.format_sql" value="true" />
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<property name="hibernate.enable_lazy_load_no_trans" value="true" />
 
 		</properties>
+		
 	</persistence-unit>
 </persistence>
