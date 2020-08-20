@@ -18,7 +18,6 @@ import com.google.gson.Gson;
 import br.udesc.dao.DisciplinaDao;
 import br.udesc.dao.DisciplinaProfessorDao;
 import br.udesc.dao.ProfessoresDao;
-import br.udesc.excecoes.ObjetoInexistente;
 import br.udesc.modelo.Avaliacoes;
 import br.udesc.modelo.Disciplina;
 import br.udesc.modelo.DisciplinaProfessores;
@@ -40,7 +39,7 @@ public class DisciplinaProfessoresWS {
 
 	@POST
 	@Consumes("application/json")
-	public Response getTurma(String json) throws JSONException , ObjetoInexistente {
+	public Response getTurma(String json) throws JSONException {
 
 		try {
 
@@ -57,7 +56,7 @@ public class DisciplinaProfessoresWS {
 
 			return Response.ok(daoDp.salvar(dp)).build();
 
-		} catch (ObjetoInexistente ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 

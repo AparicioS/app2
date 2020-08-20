@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import br.udesc.excecoes.ObjetoInexistente;
+
 import br.udesc.modelo.Disciplina;
 import br.udesc.modelo.Frequencia;
 
@@ -21,7 +21,7 @@ public class FrequenciaDao extends Dao<Frequencia> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new ObjetoInexistente("Frequencia");
+//			throw new ObjetoInexistente("Frequencia");
 		}
 		return lista;
 	}
@@ -35,7 +35,7 @@ public class FrequenciaDao extends Dao<Frequencia> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new ObjetoInexistente("Frequencia");
+//			throw new ObjetoInexistente("Frequencia");
 		}
 		return lista.get(0);
 	}

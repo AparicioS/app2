@@ -19,7 +19,6 @@ import br.udesc.dao.AvaliacaoDao;
 import br.udesc.dao.DisciplinaDao;
 import br.udesc.dao.DisciplinaProfessorDao;
 import br.udesc.dao.ProfessoresDao;
-import br.udesc.excecoes.ObjetoInexistente;
 import br.udesc.modelo.Avaliacoes;
 import br.udesc.modelo.Disciplina;
 import br.udesc.modelo.DisciplinaProfessores;
