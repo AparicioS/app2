@@ -10,9 +10,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 import br.udesc.dao.AvaliacaoDao;
 import br.udesc.dao.DisciplinaDao;
@@ -36,14 +39,16 @@ public class FrequenciaWS {
 	@GET
 	@Path("listar")
 	@Produces("application/json")
-	public List<Frequencia> getAvaliacoes() {
-		return daoF.listar();
+	public Response getAvaliacoes() {
+		return Response.ok(daoF.listar()).build();
 	}
 
 	@POST
 	@Consumes("application/json")
-	public void getFrequencia(String json) throws JSONException, ParseException {
+	public Response getFrequencia(String json) throws JSONException, ParseException {
 
+		try {
+			
 		JSONObject jsonn = new JSONObject(json);
 
 		
@@ -60,8 +65,13 @@ public class FrequenciaWS {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
 		Date data = formato.parse(jsonn.get("data").toString());
 		f.setData(data);
-	
-		daoF.salvar(f);
+		Gson frequencia = new Gson();
+		frequencia.toJson(daoF.salvar(f));
+		return Response.ok(frequencia).build();
+		
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
 
 	}
 }

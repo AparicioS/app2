@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import br.udesc.excecoes.ObjetoInexistente;
 import br.udesc.modelo.Disciplina;
 import br.udesc.modelo.Professores;
 
@@ -19,6 +20,9 @@ public class ProfessoresDao extends Dao<Professores> {
 		List<Professores> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
+		if(lista.size() == 0) {
+			throw new ObjetoInexistente("Professor");
+		}
 		return lista;
 	}
 	
@@ -30,7 +34,9 @@ public class ProfessoresDao extends Dao<Professores> {
 		List<Professores> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
-		System.out.println(lista.get(0).toString());
+		if(lista.size() == 0) {
+			throw new ObjetoInexistente("Professor");
+		}
 		return lista.get(0);
 	}
 

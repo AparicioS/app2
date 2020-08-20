@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
@@ -25,8 +26,8 @@ public class DisciplinaWS {
 	@GET
 	@Path("listar")
 	@Produces("application/json")
-	public List<Disciplina> getDisciplinas() {
-		return dao.listar();
+	public Response getDisciplinas() {
+		return Response.ok(dao.listar()).build();
 	}
 
 }

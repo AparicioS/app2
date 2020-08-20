@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import br.udesc.excecoes.ObjetoInexistente;
 import br.udesc.modelo.Avaliacoes;
 import br.udesc.modelo.Disciplina;
 
@@ -22,6 +23,9 @@ public class AvaliacaoDao extends Dao<Avaliacoes> {
 		List<Avaliacoes> lista = q.getResultList();
 		entityTransaction.commit();
 		entityManager.close();
+		if(lista.size() == 0) {
+			throw new ObjetoInexistente("Avaliação");
+		}
 		return lista;
 	}
 }

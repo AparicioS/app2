@@ -15,7 +15,7 @@ public abstract class Dao<T> {
 		entityManager.persist(tipo);
 		entityTransaction.commit();
 		entityManager.close();
-		return "Salvo com sucesso";
+		return  tipo.getClass().getSimpleName()+" Salvo(a) com sucesso!";
 	}
 
 }
