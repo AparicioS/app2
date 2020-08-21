@@ -24,11 +24,11 @@ public class Inicializa {
 	private ServicoDao sd = new ServicoDao();
 	
 	public Inicializa() {
-		if(JPAUtil.getEntityManager() == null) {
+	
 		disciplina();
 		professores();
 		usuario();
-		}
+	
 	}
 	
 	public void disciplina() {
