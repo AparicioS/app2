@@ -8,9 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-
+import br.udesc.excecoes.RegistroNaoEncontrado;
 import br.udesc.modelo.Avaliacoes;
-import br.udesc.modelo.Disciplina;
 
 
 public class AvaliacaoDao extends Dao<Avaliacoes> {
@@ -24,7 +23,7 @@ public class AvaliacaoDao extends Dao<Avaliacoes> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-//			throw new ObjetoInexistente("Avalia��o");
+			throw new RegistroNaoEncontrado();
 		}
 		return lista;
 	}

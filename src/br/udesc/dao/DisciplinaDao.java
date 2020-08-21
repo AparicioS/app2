@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.sound.midi.Soundbank;
 
-
+import br.udesc.excecoes.RegistroNaoEncontrado;
 import br.udesc.modelo.Disciplina;
 
 public class DisciplinaDao extends Dao<Disciplina> {
@@ -21,7 +21,7 @@ public class DisciplinaDao extends Dao<Disciplina> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-//			throw new ObjetoInexistente("Disciplina");
+			throw new RegistroNaoEncontrado();
 		}
 		return lista;
 	}
@@ -35,7 +35,7 @@ public class DisciplinaDao extends Dao<Disciplina> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-//			throw new ObjetoInexistente("Disciplina");
+			throw new RegistroNaoEncontrado();
 		}
 		return lista.get(0);
 	}
