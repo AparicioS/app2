@@ -1,6 +1,9 @@
 package resources;
 
+import javax.persistence.EntityManagerFactory;
+
 import br.udesc.dao.DisciplinaDao;
+import br.udesc.dao.JPAUtil;
 import br.udesc.dao.ProfessoresDao;
 import br.udesc.dao.ServicoDao;
 import br.udesc.dao.ServicosUsuarioDao;
@@ -13,6 +16,7 @@ import br.udesc.modelo.Usuario;
 
 public class Inicializa {
 	
+
 	private DisciplinaDao dis = new DisciplinaDao();
 	private ProfessoresDao pro = new ProfessoresDao();
 	private UsuarioDao usu = new UsuarioDao();
@@ -20,9 +24,11 @@ public class Inicializa {
 	private ServicoDao sd = new ServicoDao();
 	
 	public Inicializa() {
+		if(JPAUtil.getEntityManager() == null) {
 		disciplina();
 		professores();
 		usuario();
+		}
 	}
 	
 	public void disciplina() {
