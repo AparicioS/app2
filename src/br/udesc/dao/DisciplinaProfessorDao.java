@@ -21,7 +21,7 @@ public class DisciplinaProfessorDao extends Dao<DisciplinaProfessores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			throw new RegistroNaoEncontrado(" Turma ");
 		}
 		return lista;
 	}

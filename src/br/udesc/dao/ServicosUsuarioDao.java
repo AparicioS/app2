@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import br.udesc.excecoes.RegistroNaoEncontrado;
+import br.udesc.excecoes.UsuarioNaoAutorizado;
 import br.udesc.modelo.ServicoUsuarioAutorizado;
 
 public class ServicosUsuarioDao extends Dao<ServicoUsuarioAutorizado> {
@@ -20,7 +20,7 @@ public class ServicosUsuarioDao extends Dao<ServicoUsuarioAutorizado> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			throw new UsuarioNaoAutorizado();
 		}
 		return lista;
 	}
