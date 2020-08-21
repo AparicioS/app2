@@ -1,7 +1,12 @@
 package br.udesc.utils;
 
 import java.lang.reflect.Method;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,9 +15,12 @@ import java.util.StringTokenizer;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.container.ResourceInfo;
 
+
+import br.udesc.dao.ServicoUsadosDao;
 import br.udesc.dao.ServicosUsuarioDao;
 import br.udesc.modelo.Servico;
 import br.udesc.modelo.ServicoUsuarioAutorizado;
+import br.udesc.modelo.ServicosUsados;
 import br.udesc.modelo.Usuario;
 
 public class AuthenticationUtils {
@@ -23,16 +31,7 @@ public class AuthenticationUtils {
 	
 	private static Map< String, Usuario> usuarios = new HashMap<>();
 	
-	static {
-		 
-		usuarios.put("a", new Usuario("a", "a")); // YTph
-//		usuarios.put("b", new Usuario("b", "b", "inserirCliente")); // Yjpi
-//		Usuario u = new Usuario("c", "c", "admin");
-//		u.addRole("alterarCliente");
-//		usuarios.put("c", u); // Yzpj
-		
-	}
-	
+
 	public static boolean isUsuarioAutenticado(String authString){
         
 		if (authString == null)
@@ -90,13 +89,29 @@ public class AuthenticationUtils {
 	        	if (roles.length > 0) {
 		        	
 		        	for (String role:roles) {
-		        		if (servico.getNomeServico().equals(role)) 
-		        			return true;
+		        		if (servico.getNomeServico().equals(role) && sa.isAutorizado() == true) {
+		        			ServicoUsadosDao su = new ServicoUsadosDao();
+		    	        	ServicosUsados s1 = new ServicosUsados();
+		    	        	s1.setServico(servico);
+		    	        	s1.setUsuario(usuario);
+		    	        	
+		    	        	LocalDateTime agora = LocalDateTime.now();
+		    	        	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		    	        	DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		    	        	String dataFormatada = formatterData.format(agora);
+		    	        	Date data = simpleDateFormat.parse(dataFormatada);
+		    	        	s1.setMomento(data);
+		    	        	
+		    	        	su.salvar(s1);
+		    	        	return true;
+		        		}
+		        			
 		        	}
 		        	
 		        	return false;
 	        	}
 	        	
+	        
 	            return true;
 	        } else {
 	        	return false;
