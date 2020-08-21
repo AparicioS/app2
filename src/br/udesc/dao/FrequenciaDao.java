@@ -21,7 +21,7 @@ public class FrequenciaDao extends Dao<Frequencia> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			//throw new RegistroNaoEncontrado();
 		}
 		return lista;
 	}
@@ -35,7 +35,7 @@ public class FrequenciaDao extends Dao<Frequencia> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			//throw new RegistroNaoEncontrado();
 		}
 		return lista.get(0);
 	}

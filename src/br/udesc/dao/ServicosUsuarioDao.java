@@ -20,7 +20,7 @@ public class ServicosUsuarioDao extends Dao<ServicoUsuarioAutorizado> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new UsuarioNaoAutorizado();
+			//throw new UsuarioNaoAutorizado();
 		}
 		return lista;
 	}

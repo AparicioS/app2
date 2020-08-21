@@ -23,7 +23,7 @@ public class AvaliacaoDao extends Dao<Avaliacoes> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado(" Avaliação ");
+			//throw new RegistroNaoEncontrado(" Avaliação ");
 		}
 		return lista;
 	}

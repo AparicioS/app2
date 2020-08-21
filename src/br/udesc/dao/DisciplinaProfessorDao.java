@@ -21,7 +21,7 @@ public class DisciplinaProfessorDao extends Dao<DisciplinaProfessores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado(" Turma ");
+			//throw new RegistroNaoEncontrado(" Turma ");
 		}
 		return lista;
 	}
@@ -35,7 +35,7 @@ public class DisciplinaProfessorDao extends Dao<DisciplinaProfessores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			//throw new RegistroNaoEncontrado();
 		}
 		return lista.get(0);
 	}

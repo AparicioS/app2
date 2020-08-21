@@ -21,7 +21,7 @@ public class ProfessoresDao extends Dao<Professores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado(" Professor ");
+			//throw new RegistroNaoEncontrado(" Professor ");
 		}
 		return lista;
 	}
@@ -35,7 +35,7 @@ public class ProfessoresDao extends Dao<Professores> {
 		entityTransaction.commit();
 		entityManager.close();
 		if(lista.size() == 0) {
-			throw new RegistroNaoEncontrado();
+			//throw new RegistroNaoEncontrado();
 		}
 		return lista.get(0);
 	}
